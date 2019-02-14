@@ -22,6 +22,13 @@ class CategoryController extends Controller
         return view('pages.categories.category', compact('title','categories'));
     }
 
+    public function getCategory()
+    {
+//        $data = Data::all();
+        $categories = Category::orderBy('updated_at', 'desc')->get();
+        return $categories;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,6 +46,22 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function storeItem(Request $request)
+    {
+        $slug = str_slug($request->name,'_');
+        $fileName = null;
+        $image = $request->file('image');
+
+        $data = [
+            'name'             => $request->name,
+            'age'             => $request->age,
+            'profession'             => $request->profession,
+        ];
+        $create = Category::create($data);
+        return $data;
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -209,8 +232,28 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function destroy(Request $request)
     {
-        //
+        $con = Category::where('id','=',$request->id)->first();
+
+        $upload_dir = public_path('uploads/categoryimages/');
+        $thumb_dir = public_path('uploads/categoryimages/thumb/');
+
+        File::delete($upload_dir.$con->image);
+        File::delete($thumb_dir.$con->image);
+        $delete = Category::find($request->id)->delete();
+
+        if ($delete){
+            if ($request->ajax()){ //checking if input is ajax
+                return response()->json(['success' => 'Category deleted successfully.']);
+            }
+            return back()->with('success', trans('Category deleted successfully.'));
+        }
+        if ($request->ajax()){ //checking if input is ajax
+            return response()->json(['error' => 'something_went_wrong.']);
+        }
+        return response()->json(['success' => 'Product successfully deleted']);
+
     }
 }

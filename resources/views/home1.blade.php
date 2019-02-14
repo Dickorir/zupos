@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{--@extends('layout.master')--}}
 
 @section('content')
 <div class="container">
@@ -14,11 +15,13 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged illn!
                 </div>
             </div>
+            jjjjj
             <example-component></example-component>
         </div>
     </div>
 </div>
+
 @endsection

@@ -4,3 +4,9 @@
   border-radius: 0px !important;
   height: 34px !important;
 }
+#item-list {
+  padding: 0 1px 0 1px;
+  min-height: 50px;
+  overflow: scroll !important;
+  position: relative;
+}

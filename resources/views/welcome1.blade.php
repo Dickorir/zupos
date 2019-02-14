@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-        @include('layout.header')
+        <title>Siushikanishe</title>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="container">
@@ -26,6 +26,7 @@
                     </div>
                     <button type="submit" id="regi" class="btn btn-primary btn-block btn-flat fa fa-pencil">Add</button>
                 </div>
+                <example-component></example-component>
             </div>
         </div>
         <script src="{{ asset('js/app.js') }}"> </script>

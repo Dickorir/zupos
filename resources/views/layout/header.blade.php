@@ -6,6 +6,8 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
+
+	<script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"> </script>
 	<link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
@@ -27,8 +29,7 @@
 	<link rel="stylesheet" href="{{asset('build/css/custom.css')}}">
 
 	<!-- jQuery 3 -->
-	<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
-	<script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"> </script>
+	{{--<script src="http://code.jquery.com/jquery-3.3.1.js"></script>--}}
 	<script src="{{ asset('build/sweetalert/sweetalert.min.js') }}"> </script>
 	<script src="{{ asset('admin_css/js/sweetalert.min.js') }}"> </script>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

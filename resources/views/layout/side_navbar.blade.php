@@ -49,6 +49,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li class="active"><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Category</a></li>
+					<li class="active"><a href="{{ url('sub_category/') }}"><i class="fa fa- fa-cube"></i> Sub Category</a></li>
 					<li><a href="{{ route('product.index') }}"><i class="fa fa-codepen"></i> Products</a></li>
 					<li><a href="{{ route('product_variant.index') }}"><i class="fa fa-codepen"></i> Products Variant</a></li>
 				</ul>

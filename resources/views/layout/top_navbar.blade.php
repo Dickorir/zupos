@@ -14,21 +14,26 @@
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
-    <!-- Navbar Right Menu -->
-    <div class="navbar-custom-menu">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <!-- Messages: style can be found in dropdown.less-->
-
         <li class="dropdown message-menu pull-left">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <?php
             date_default_timezone_set('Africa/Nairobi');
             echo '';
             ?>
-              {{  date("d D M Y").' - ' }}
-              <span class="clockstyle" id="clockDisplay"></span>
+            {{  date("d D M Y").' - ' }}
+            <span class="clockstyle" id="clockDisplay"></span>
           </a>
         </li>
+      </ul>
+    </div>
+    <!-- Navbar Right Menu -->
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <!-- Messages: style can be found in dropdown.less-->
+
         <li class="dropdown messages-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-envelope-o"></i>

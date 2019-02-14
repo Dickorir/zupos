@@ -19,7 +19,11 @@ class CreateProductsTable extends Migration
             $table->string('slug')->nullable()->unique();
             $table->string('image')->nullable();
             $table->integer('category_id');
+            $table->integer('sub_category_id');
             $table->text('description')->nullable();
+            $table->float('price')->default(0);
+            $table->integer('quantity')->default(0);
+            $table->integer('re_order_level')->default(0)->nullable();
             $table->timestamps();
         });
     }

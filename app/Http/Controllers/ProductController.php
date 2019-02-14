@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\ProductItems;
 use App\Products;
+use App\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
@@ -33,7 +36,32 @@ class ProductController extends Controller
     {
         $title = trans('Products Create');
         $categories = Category::orderBy('updated_at', 'desc')->get();
-        return view('pages.products.add', compact('title','categories'));
+        $subcategories = SubCategory::orderBy('updated_at', 'desc')->get();
+        return view('pages.products.add', compact('title','categories','subcategories'));
+    }
+
+    public function getCategs()
+    {
+        $data = Category::all();
+        return $data;
+    }
+
+    public function getSubCategory($id)
+    {
+        $data = SubCategory::where('category_id',$id)->orderBy('name', 'asc')->select('name','id')->get();
+        return $data;
+    }
+
+    public function displayProducts()
+    {
+        $products = DB::table('products as p')
+            ->join('categories as c', 'p.category_id', '=', 'c.id')
+            ->join('sub_categories as sc', 'p.sub_category_id', '=', 'sc.id')
+            ->select('p.id','p.name','p.image','p.description','p.price','p.quantity','p.re_order_level', 'c.name as category', 'sc.name as subcat')
+            ->orderBy('p.updated_at', 'desc')
+            ->get();
+
+        return $products;
     }
 
     /**
@@ -42,9 +70,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
 //        dd($request);
+
         $this->validate($request, [
             'name' => 'required|string|max:255|unique:products',
             'description' => 'string',
@@ -93,20 +123,15 @@ class ProductController extends Controller
             'description'      => $request->description,
             'slug'             => $slug,
             'category_id'      => $request->category,
+            'sub_category_id'      => $request->subcategory,
+            'price'      => $request->price,
+            'quantity'      => $request->quantity,
+            're_order_level'      => $request->re_order_level,
         ];
 
-        try {
-            $create = Products::create($data);
-            if ($create){
-                return redirect('product')->with('success', trans('Category '.$request->name.' created successfully.'));
-            }
-        } catch(\Illuminate\Database\QueryException $e){
-            $errorCode = $e->errorInfo[1];
-            if($errorCode == '1062'){
-                return back()->with('error', trans('Duplicate entry'))->withInput($request->input());
-            }
-        }
-        return back()->with('error', trans('something_went_wrong'))->withInput($request->input());
+        $create = Products::create($data);
+        return $create;
+
     }
 
     /**

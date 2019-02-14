@@ -69,7 +69,8 @@
                 </div>
                 <!-- /.box -->
             </div>
-        </div>
+        </div>                <example-component></example-component>
+
     </section>
     <!-- /.content -->
 @endsection
