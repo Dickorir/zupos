@@ -20,6 +20,11 @@
 <script src="{{ asset('dist/js/pages/dashboard2.js') }}"> </script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"> </script>
+
+<!-- PNotify -->
+<script type="text/javascript" src="{{asset('vendors/pnotify/dist/pnotify.js')}}"></script>
+<script type="text/javascript" src="{{asset('vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
+<script type="text/javascript" src="{{asset('vendors/pnotify/dist/pnotify.nonblock.js')}}"></script>
 <!-- This dismisses the motifications -->
 <script>
     $(".alert-dismissible").fadeTo(2000, 500).slideUp(1000, function(){

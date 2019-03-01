@@ -12,7 +12,7 @@ class SubCategory extends Model
         return $this->hasOne('App\Category','id','category_id');
     }
 
-    public function subcategory(){
-        return $this->hasOne('App\SubCategory','id','sub_category_id');
+    public function product(){
+        return $this->hasOne('App\Products','sub_category_id','id');
     }
 }

@@ -15,7 +15,7 @@
     <form id="add_cart_form" method="POST" action="{{url('/register')}}" >
       @csrf
       <div class="form-group has-feedback">
-        <input type="text" name="role" class="form-control hidden" value="5">
+        <input type="text" name="role" class="form-control hidden" value="1">
         <input type="text" name="name" class="form-control" placeholder="Full name" required  value="{{ old('name') }}" id="name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>

@@ -43,7 +43,7 @@
         });
     </script>
 @elseif(session('error1'))
-    <div class="alert alert-info fade-in ${dismissed ? 'hidden': ''}" role="alert">
+    <div class="alert alert-danger fade-in ${dismissed ? 'hidden': ''}" role="alert">
         <button type="button" class="close" click.delegate="dismiss" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>

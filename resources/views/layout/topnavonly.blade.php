@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="{{asset('build/css/custom-multi.css')}}">
 <link rel="stylesheet" href="{{asset('build/css/responsive.css')}}">
 
+<!-- PNotify -->
+<link href="{{asset('vendors/pnotify/dist/pnotify.css')}}" rel="stylesheet" type="text/css" media="all" >
+<link href="{{asset('vendors/pnotify/dist/pnotify.buttons.css')}}" rel="stylesheet" type="text/css" media="all" >
+<link href="{{asset('vendors/pnotify/dist/pnotify.nonblock.css')}}" rel="stylesheet" type="text/css" media="all" >
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav pos">
 <div class="wrapper">

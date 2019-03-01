@@ -17,7 +17,15 @@ Route::get('/', function () {
 Route::get('/top', function () {
     return view('pos3');
 });
+Route::resource('users', 'UserController');
+Route::get('/deactivate_user/{id}', 'UserController@deactivate_user');
+Route::get('/activate_user/{id}', 'UserController@activate_user');
+
 Route::get('/pos', 'PosController@index')->name('pos');
+
+Route::get('load/categoryItems/{id}', 'PosController@categoryItems');
+
+Route::get('load/subcategoryItems/{id}', 'PosController@subcategoryItems');
 
 Auth::routes();
 
@@ -49,3 +57,18 @@ Route::get('/getItems', 'HomeController@getItems' );
 Route::post('/deleteItem/{id}', 'HomeController@deleteItem' );
 
 Route::post('/editItem/{id}', 'HomeController@editItem' );
+
+Route::get('cart/addItem/{id}', 'CartController@addItem');
+
+Route::get('cart/deleteItem/{id}', 'CartController@deleteItem');
+
+Route::get('cart/updateQty/{id}', 'CartController@updateQty');
+
+Route::get('cart/updateQtyDown/{id}', 'CartController@updateQtyDown');
+
+Route::get('cart/clear', 'CartController@clearCart');
+
+Route::get('cart/hold', 'CartController@holdCart');
+
+Route::get('cart/hold/restore/{id}', 'CartController@holdCartRestore');
+

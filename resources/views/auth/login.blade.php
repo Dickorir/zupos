@@ -11,6 +11,8 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
+    @include('partials.alerts.flash')
+    @include('partials.errors.error')
     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
       @csrf
       <div class="form-group has-feedback">

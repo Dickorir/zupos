@@ -16,12 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('order_number')->unique();
-            $table->integer('orderby_id'); // if waiter
-            $table->integer('orderby_title'); // if waiter or customer or admin
+            $table->integer('waiter_id')->nullable(); // if waiter
+            $table->integer('customer_id')->default(0)->nullable(); // if customer
             $table->float('discount')->default(0)->nullable();
             $table->float('total_price')->default(0);
-            $table->string('status');
-            $table->string('confirm')->default(0)->nullable(); // to confirm an order placed by customer by waiter
+            $table->boolean('paid')->default(0);
+            $table->string('confirm_by')->default(0)->nullable(); // to confirm an order placed by customer by waiter
+            $table->integer('order_by')->default(0);
             $table->timestamps();
         });
     }

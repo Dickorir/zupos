@@ -10,6 +10,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+     <script src="../../bower_components/jquery/dist/jquery.js"></script>
      <script src="../../build/sweetalert/sweetalert.min.js"></script>
 </head>
 

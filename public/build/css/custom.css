@@ -10,3 +10,17 @@
   overflow: scroll !important;
   position: relative;
 }
+.qtyaddminus{
+  margin-right: -5px !important;
+  margin-left: -5px !important;
+  margin-bottom: 0px !important;
+}
+.qtyaddminus .input-group .form-control {
+  width: 42px !important;
+}
+.qtyaddminus .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group {
+  background-color: #fddeda;
+}
+.qtyaddminus .input-group-btn:last-child>.btn, .input-group-btn:first-child>.btn-group {
+  background-color: #bef1d9;
+}

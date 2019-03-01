@@ -54,6 +54,7 @@
 					<li><a href="{{ route('product_variant.index') }}"><i class="fa fa-codepen"></i> Products Variant</a></li>
 				</ul>
 			</li>
+			<li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i>Manage Users</a></li>
 		</ul>
 	</section>
 	<!-- /.sidebar -->
