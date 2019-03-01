@@ -1,7 +1,8 @@
+
 @foreach($prod as $product)
 
     <a style=" background-image: url('{{asset('uploads/productimages/'.$product->image)}}');background-size: 210px 95px;background-repeat: no-repeat;background-position: center;" href="" id="{{ $product->id }}" class="category-single-item {{ $product->slug }} prod">
-        {{ $product->name }} <span>(FM-056)</span></a>
+        {{ $product->name }} <span></span></a>
 @endforeach
 
 <script type="text/javascript">
@@ -12,11 +13,26 @@
             var element = $(this);
             //Find the id of the link that was clicked
             var id = element.attr("id");
+            var table = $('#table_id').val();
+
+            if (table == '' ) {
+                new PNotify({
+                    title: 'Success',
+                    text: 'You have not selected any table',
+                    type: 'error',
+                    delay: 1000,
+                    styling: 'bootstrap3'
+                });
+                return false;
+            }
 
             $.ajax({
                 url: '/cart/addItem/'+id,
                 method:"GET",
-                data:id,
+                data : {
+                    "cust": $('#customer_id').val(),
+                    "table": table,
+                },
                 beforeSend:function(){
                     $(".mail_view").html('<img src="img/spinner.gif" alt="Wait" />');
                     {{--$("#addbtn{{ $product->id }}").text("Adding to cart");--}}

@@ -120,9 +120,6 @@ class CartController extends Controller
 
     public function holdCartRestore(Request $request, $id)
     {
-        $cust = $_GET['cust'];
-        $table = $_GET['table'];
-
         $hold = CartHold::with(['user'])
             ->whereHas('user', function ($query) { $query->where('id', Auth::user()->id);  })
             ->orderBy('id','asc')->select('hold_id','table_no','waiter_id','customer_id','product_id')->get();
@@ -133,7 +130,7 @@ class CartController extends Controller
         /* return the products to the cart */
         foreach ($hold as $holds){
             $product = Products::where('id', $holds->product_id)->first();
-            $cartItem = Cart::add($product->id, $product->name, 1, $product->price, ['cust' => $cust,'table' => $table]);
+            $cartItem = Cart::add($product->id, $product->name, 1, $product->price, ['cust' => $holds->customer_id,'table' => $holds->waiter_id]);
 
         }
         /* delete that products which were held */
@@ -149,6 +146,7 @@ class CartController extends Controller
             ->whereHas('user', function ($query) { $query->where('id', Auth::user()->id);  })
             ->orderBy('id','asc')->distinct('hold_id')->select('hold_id','table_no','waiter_id','customer_id')->get();
 //        dd($cart);
+//        dd($hold);
         if ($request->ajax()){ //checking if input is ajax
             return response()->json([
                 'thecart' => view('layouts.thecart')->render(),
