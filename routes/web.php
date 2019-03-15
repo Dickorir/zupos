@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'Auth\LoginController@showLoginForm');
+
 Route::get('/top', function () {
     return view('pos3');
 });
@@ -72,3 +75,4 @@ Route::get('cart/hold', 'CartController@holdCart');
 
 Route::get('cart/hold/restore/{id}', 'CartController@holdCartRestore');
 
+Route::get('cart/placeOrder', 'OrdersController@placeOrder');

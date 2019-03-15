@@ -29,6 +29,16 @@
         </li>
       </ul>
     </div>
+    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown message-menu pull-left">
+          <a href="{{ url('pos/') }}">
+            POS
+            <span class="clockstyle" id="clockDisplay"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">

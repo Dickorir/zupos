@@ -170,14 +170,14 @@
                                 <div class="btn-group-custom">
                                     <button class="btn btn-danger btn-lg custom-btn-one cancel" style="width: 33%">Cancel</button>
                                     <button class="btn btn-danger btn-lg custom-btn-two hold" id="{{ Cart::count() }}" style="width: 32%">Hold</button>
-                                    <button class="btn btn-s btn-lg custom-btn-three" style="width: 32.6%">Place Order</button>
+                                    <button class="btn btn-s btn-lg custom-btn-three placeorder" style="width: 32.6%">Place Order</button>
                                 </div>
                             </div>
                             <div class="btn-area hidden-xs" style="margin-bottom: 9px">
                                 <div class="btn-group-custom">
                                     <button class="btn btn-danger btn-lg custom-btn-one cancel" style="width: 33%">Cancel</button>
                                     <button class="btn btn-danger btn-lg custom-btn-two hold" id="{{ Cart::count() }}" style="width: 32%">Hold</button>
-                                    <button class="btn btn-s btn-lg custom-btn-three" style="width: 32.6%;color:white">Place Order</button>
+                                    <button class="btn btn-s btn-lg custom-btn-three placeorder" style="width: 32.6%;color:white">Place Order</button>
                                 </div>
                             </div>
                             <input type="hidden" value="0" name="hiddenRowCounter" id="hiddenRowCounter">
@@ -244,6 +244,68 @@
                 timer: 1000,
 //                                confirmButtonText: 'Ok'
             });*/
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.placeorder').on('click', function(evt) {
+                evt.preventDefault();
+                //Save the link in a variable called element
+                var element = $(this);
+                //Find the id of the link that was clicked
+                var id = element.attr("id");
+                var table = $('#table_id').val();
+                var cust = $('#customer_id').val();
+
+                alert(table);
+                alert(cust);
+
+                if (table == '' ) {
+                    new PNotify({
+                        title: 'Failed',
+                        text: 'You have not selected any table',
+                        type: 'error',
+                        delay: 1000,
+                        styling: 'bootstrap3'
+                    });
+                    return false;
+                }
+
+                $.ajax({
+                    url: '/cart/placeOrder/',
+                    method:"GET",
+                    data : {
+                        "cust": cust,
+                        "table": table,
+                    },
+                    beforeSend:function(){
+                        $(".mail_view").html('<img src="img/spinner.gif" alt="Wait" />');
+                        {{--$("#addbtn{{ $product->id }}").text("Adding to cart");--}}
+                    },
+                    success:function(data){
+//                    $("#cartCount").text(data.cart);
+                        console.log('success' + data.success );
+                        new PNotify({
+                            title: 'Success',
+                            text: data.success,
+                            type: 'success',
+                            delay: 1000,
+                            styling: 'bootstrap3'
+                        });
+                        $('#o').html(data.thecart);
+                        $('#sub_total').val(data.cartsubtot);
+                        $('#total_payable').val(data.carttotal);
+                        $('#tax').val(data.carttax);
+                        $('#total_item').text(data.cartcount);
+                    },
+                    error: function (data) {
+                        {{--$("#addbtn{{ $product->id }}").text("Add to Cart");--}}
+                        alert('Ooops something went wrong!');
+                    },
+                    complete : function (data){
+                    }
+                });
+            });
         });
     </script>
     <script type="text/javascript">
