@@ -257,9 +257,6 @@
                 var table = $('#table_id').val();
                 var cust = $('#customer_id').val();
 
-                alert(table);
-                alert(cust);
-
                 if (table == '' ) {
                     new PNotify({
                         title: 'Failed',
@@ -279,12 +276,12 @@
                         "table": table,
                     },
                     beforeSend:function(){
-                        $(".mail_view").html('<img src="img/spinner.gif" alt="Wait" />');
+                        // $(".mail_view").html('<img src="img/spinner.gif" alt="Wait" />');
                         {{--$("#addbtn{{ $product->id }}").text("Adding to cart");--}}
                     },
                     success:function(data){
 //                    $("#cartCount").text(data.cart);
-                        console.log('success' + data.success );
+                        console.log('order bana' + data.order_no );
                         new PNotify({
                             title: 'Success',
                             text: data.success,
@@ -297,6 +294,9 @@
                         $('#total_payable').val(data.carttotal);
                         $('#tax').val(data.carttax);
                         $('#total_item').text(data.cartcount);
+
+                        window.open('invoice/'+data.order_no, 'window name', 'window settings');
+                        // return false;
                     },
                     error: function (data) {
                         {{--$("#addbtn{{ $product->id }}").text("Add to Cart");--}}
@@ -538,7 +538,7 @@
 
                 if (table == '' ) {
                     new PNotify({
-                        title: 'Success',
+                        title: 'Error',
                         text: 'You have not selected any table',
                         type: 'error',
                         delay: 1000,

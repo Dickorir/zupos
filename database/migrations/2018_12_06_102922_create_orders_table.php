@@ -23,7 +23,8 @@ class CreateOrdersTable extends Migration
             $table->float('discount')->default(0)->nullable();
             $table->float('total_price')->default(0);
             $table->boolean('paid')->default(0);
-            $table->integer('order_by')->default(0);//1-admin 2-manager 3-cashier 4-waiter 5-kitchen 0-customer
+            $table->integer('order_by')->default(0);// 0-customer1-admin 2-manager 3-cashier 4-waiter 5-kitchen
+            $table->integer('kitchen')->default(0);// 0-placed orders 1-viewed 2-finished 3-cannot be completed
             $table->timestamps();
         });
     }

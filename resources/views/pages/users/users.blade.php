@@ -23,7 +23,7 @@
                     <div class="box-header">
                         <!-- <h3 class="box-title">New Category</h3> -->
 
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" style="font-size: 14px;color: green;">New Category</button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" style="font-size: 14px;color: green;">New User</button>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>

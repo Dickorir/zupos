@@ -76,3 +76,23 @@ Route::get('cart/hold', 'CartController@holdCart');
 Route::get('cart/hold/restore/{id}', 'CartController@holdCartRestore');
 
 Route::get('cart/placeOrder', 'OrdersController@placeOrder');
+
+Route::get('invoice/{id}', 'OrdersController@invoice');
+
+Route::get('contact-info', 'SettingsController@contactinfo');
+Route::post('save-settings','SettingsController@update');
+
+Route::resource('table', 'TableController');
+
+Route::resource('kitchen', 'KitchenController');
+
+Route::get('waiting/orders', 'KitchenController@waitOrders');
+Route::get('finished/orders', 'KitchenController@finishedOrders');
+Route::get('new/orders', 'KitchenController@newOrders');
+Route::get('view/orderitems/{id}', 'KitchenController@viewOrderItems');
+Route::get('fin/order/{id}', 'KitchenController@finishOrder');
+Route::get('prepare/order/{id}', 'KitchenController@prepareOrder');
+Route::get('badges/orders', 'KitchenController@badgeOrder');
+
+
+

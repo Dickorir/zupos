@@ -39,6 +39,11 @@ class LoginController extends Controller
                 $this->redirectTo = '/pos';
                 //        return $this->redirectTo;
             }
+        }elseif ($user->role == 5){
+            if(\Auth::guard()->check()){
+                $this->redirectTo = '/kitchen';
+                //        return $this->redirectTo;
+            }
         }
         else {
             if(\Auth::guard()->check()){

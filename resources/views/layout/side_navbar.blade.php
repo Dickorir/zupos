@@ -10,9 +10,9 @@
 			</div>
 			<div class="pull-left info">
 				@guest
-				<p>Guest</p>
+					<p>Guest</p>
 				@else
-				<p>{{ Auth::user()->name }}</p>
+					<p>{{ Auth::user()->name }}</p>
 				@endif
 				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
@@ -32,29 +32,37 @@
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class="header">MAIN NAVIGATION</li>
-			<li class="treeview menu-open">
-				<a href="{{ url('/') }}">
-					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
-					<span class="pull-right-container">
+			@if(Auth::user()->role == 1 || Auth::user()->role == 2)
+
+				<li class="treeview menu-open">
+					<a href="{{ url('/') }}">
+						<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+						<span class="pull-right-container">
             </span>
-				</a>
-			</li>
-			<li class="treeview active">
-				<a href="#">
-					<i class="fa fa-codepen"></i>
-					<span>Products</span>
-					<span class="pull-right-container">
+					</a>
+				</li>
+				<li class="treeview active">
+					<a href="#">
+						<i class="fa fa-codepen"></i>
+						<span>Products</span>
+						<span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-				</a>
-				<ul class="treeview-menu">
-					<li class="active"><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Category</a></li>
-					<li class="active"><a href="{{ url('sub_category/') }}"><i class="fa fa- fa-cube"></i> Sub Category</a></li>
-					<li><a href="{{ route('product.index') }}"><i class="fa fa-codepen"></i> Products</a></li>
-					<li><a href="{{ route('product_variant.index') }}"><i class="fa fa-codepen"></i> Products Variant</a></li>
-				</ul>
-			</li>
-			<li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i>Manage Users</a></li>
+					</a>
+					<ul class="treeview-menu">
+						<li class="active"><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Category</a></li>
+						<li class="active"><a href="{{ url('sub_category/') }}"><i class="fa fa- fa-cube"></i> Sub Category</a></li>
+						<li><a href="{{ route('product.index') }}"><i class="fa fa-codepen"></i> Products</a></li>
+						<li><a href="{{ route('product_variant.index') }}"><i class="fa fa-codepen"></i> Products Variant</a></li>
+					</ul>
+				</li>
+				<li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i>Manage Users</a></li>
+				<li> <a href="{{url('contact-info')}}"><i class="fa fa-address-book"></i>Contact Info</a> </li>
+				<li><a href="{{ route('table.index') }}"><i class="fa fa-table"></i>Tables</a></li>
+			@endif
+			@if(Auth::user()->role == 5 || Auth::user()->role == 1 || Auth::user()->role == 2)
+				<li><a href="{{ route('kitchen.index') }}"><i class="fa fa-cutlery"></i>Kitchen</a></li>
+			@endif
 		</ul>
 	</section>
 	<!-- /.sidebar -->
