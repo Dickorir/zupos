@@ -60,6 +60,7 @@ class OrdersController extends Controller
             'customer_id'  => $cust,
             'table_id'  => $table,
             'discount'    => 0,
+            'balance' => $cartTotal,
             'total_price' => $cartTotal,
             'paid' => 0,
             'order_by'  => Auth::user()->role,

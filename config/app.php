@@ -153,7 +153,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Melihovv\ShoppingCart\ServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -215,6 +215,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
 //        'Cart' => Melihovv\ShoppingCart\Facades\ShoppingCart::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

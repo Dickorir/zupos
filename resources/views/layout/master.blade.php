@@ -8,10 +8,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
      <script src="../../bower_components/jquery/dist/jquery.js"></script>
      <script src="../../build/sweetalert/sweetalert.min.js"></script>
+    <link href="{{ asset('build/datatable/jquery.dataTables.min.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('build/datatable/jquery.dataTables.min.js') }}"> </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -27,9 +32,9 @@
     @include('layout.footer')
 </div>
 <!-- /page content -->
+
 {{--@include('layout.pagejs')--}}
 <script src="{{ asset('js/app.js') }}"> </script>
-
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

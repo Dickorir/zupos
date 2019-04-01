@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -68,12 +68,12 @@
                                             <img :src="'/uploads/categoryimages/thumb/' +category.image" class="thumb-listing-table img-responsive" width="100" height="100"  alt="">
                                         </td>
 
-                                        <td id="show-modal" @click = "showModal=true; setVal(category.id,category.name,category.age,category.profession)" class="btn btn-info" >
+                                        <!--<td id="show-modal" @click = "showModal=true; setVal(category.id,category.name,category.age,category.profession)" class="btn btn-info" >
                                             <span class="glyphicon glyphicon-pencil"></span></td>
-                                        <td @click.prevent= "deleteCategory(category)" id="'deleteCateg'+category.image" class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span></td>
+                                        <td @click.prevent= "deleteCategory(category)" id="'deleteCateg'+category.imagee" class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span></td>-->
                                         <td>
                                             <a href="" class="btn btn-info btn-xs btn-flat"><i class="fa fa-pencil"></i> Edit </a>
-                                            <a class="btn btn-danger btn-xs btn-flat toa" href="" id="" ><i class="fa fa-trash-o "></i>&nbsp;Delete</a>
+                                            <a @click.prevent= "deleteCategory(category)" id="'deleteCateg'+category.image" class="btn btn-danger btn-xs btn-flat toa"><i class="fa fa-trash-o "></i>&nbsp;Delete</a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -100,6 +100,7 @@
                 categories: [],
                 name: '',
                 description: ''
+
             }
         },
         methods: {

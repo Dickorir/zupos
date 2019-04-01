@@ -92,6 +92,15 @@
                           <input type="text" id="website" name="website" disabled="disabled" value="{{ old('website')? old('website') : get_option('website') }}" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Currency  <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="currency" name="currency" disabled="disabled" value="{{ old('currency')? old('currency') : get_option('currency') }}" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Additional Notes  <span class="required">*</span>
                         </label>
@@ -131,6 +140,7 @@
       $('#street').removeAttr("disabled");
       $('#address').removeAttr("disabled");
       $('#website').removeAttr("disabled");
+      $('#currency').removeAttr("disabled");
       $('#description').removeAttr("disabled");
       $('#send').css('display','block');
       $('#edita').css('display','none');

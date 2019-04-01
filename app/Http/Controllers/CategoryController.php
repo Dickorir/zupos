@@ -26,13 +26,6 @@ class CategoryController extends Controller
         return view('pages.categories.category', compact('title','categories'));
     }
 
-    public function getCategory()
-    {
-//        $data = Data::all();
-        $categories = Category::orderBy('updated_at', 'desc')->get();
-        return $categories;
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +35,13 @@ class CategoryController extends Controller
     {
         $title = trans('Category Create');
         return view('pages.categories.add', compact('title'));
+    }
+
+    public function getCategory()
+    {
+//        $data = Data::all();
+        $categories = Category::orderBy('updated_at', 'desc')->get();
+        return $categories;
     }
 
     /**

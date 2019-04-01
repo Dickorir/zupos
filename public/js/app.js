@@ -48427,6 +48427,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             categories: [],
             name: '',
             description: ''
+
         };
     },
 
@@ -48692,50 +48693,28 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: "btn btn-info",
-                                attrs: { id: "show-modal" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.showModal = true
-                                    _vm.setVal(
-                                      category.id,
-                                      category.name,
-                                      category.age,
-                                      category.profession
-                                    )
+                            _c("td", [
+                              _vm._m(3, true),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn btn-danger btn-xs btn-flat toa",
+                                  attrs: { id: "'deleteCateg'+category.image" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.deleteCategory(category)
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _c("span", {
-                                  staticClass: "glyphicon glyphicon-pencil"
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: "btn btn-danger",
-                                attrs: { id: "'deleteCateg'+category.image" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    _vm.deleteCategory(category)
-                                  }
-                                }
-                              },
-                              [
-                                _c("span", {
-                                  staticClass: "glyphicon glyphicon-trash"
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(3, true)
+                                },
+                                [
+                                  _c("i", { staticClass: "fa fa-trash-o " }),
+                                  _vm._v(" Delete")
+                                ]
+                              )
+                            ])
                           ])
                         })
                       )
@@ -48813,22 +48792,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "a",
-        { staticClass: "btn btn-info btn-xs btn-flat", attrs: { href: "" } },
-        [_c("i", { staticClass: "fa fa-pencil" }), _vm._v(" Edit ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-danger btn-xs btn-flat toa",
-          attrs: { href: "", id: "" }
-        },
-        [_c("i", { staticClass: "fa fa-trash-o " }), _vm._v(" Delete")]
-      )
-    ])
+    return _c(
+      "a",
+      { staticClass: "btn btn-info btn-xs btn-flat", attrs: { href: "" } },
+      [_c("i", { staticClass: "fa fa-pencil" }), _vm._v(" Edit ")]
+    )
   }
 ]
 render._withStripped = true

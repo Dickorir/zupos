@@ -17,18 +17,6 @@
 				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
 		</div>
-		<!-- search form -->
-		<form action="#" method="get" class="sidebar-form">
-			<div class="input-group">
-				<input type="text" name="q" class="form-control" placeholder="Search...">
-				<span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-			</div>
-		</form>
-		<!-- /.search form -->
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class="header">MAIN NAVIGATION</li>
@@ -37,8 +25,7 @@
 				<li class="treeview menu-open">
 					<a href="{{ url('/') }}">
 						<i class="fa fa-dashboard"></i> <span>Dashboard</span>
-						<span class="pull-right-container">
-            </span>
+						<span class="pull-right-container"></span>
 					</a>
 				</li>
 				<li class="treeview active">
@@ -46,22 +33,36 @@
 						<i class="fa fa-codepen"></i>
 						<span>Products</span>
 						<span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+              <i class="fa fa-angle-left pull-right"></i></span>
 					</a>
 					<ul class="treeview-menu">
-						<li class="active"><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Category</a></li>
-						<li class="active"><a href="{{ url('sub_category/') }}"><i class="fa fa- fa-cube"></i> Sub Category</a></li>
+						<li class=""><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Category</a></li>
+						<li class=""><a href="{{ url('sub_category/') }}"><i class="fa fa- fa-cube"></i> Sub Category</a></li>
 						<li><a href="{{ route('product.index') }}"><i class="fa fa-codepen"></i> Products</a></li>
-						<li><a href="{{ route('product_variant.index') }}"><i class="fa fa-codepen"></i> Products Variant</a></li>
 					</ul>
 				</li>
 				<li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i>Manage Users</a></li>
 				<li> <a href="{{url('contact-info')}}"><i class="fa fa-address-book"></i>Contact Info</a> </li>
 				<li><a href="{{ route('table.index') }}"><i class="fa fa-table"></i>Tables</a></li>
+				<li class="treeview active">
+					<a href="#">
+						<i class="fa fa-codepen"></i>
+						<span>Report</span>
+						<span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i></span>
+					</a>
+					<ul class="treeview-menu">
+						<li class=""><a href="{{ url('report/sales') }}"><i class="fa fa- fa-cube"></i> Sales Report</a></li>
+						<li class=""><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Product sales</a></li>
+						<li class=""><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Sales for staff/tables</a></li>
+					</ul>
+				</li>
 			@endif
 			@if(Auth::user()->role == 5 || Auth::user()->role == 1 || Auth::user()->role == 2)
 				<li><a href="{{ route('kitchen.index') }}"><i class="fa fa-cutlery"></i>Kitchen</a></li>
+			@endif
+			@if(Auth::user()->role == 3 || Auth::user()->role == 1 || Auth::user()->role == 2)
+				<li><a href="{{ route('cashier.index') }}"><i class="fa fa-money"></i>Cashier</a></li>
 			@endif
 		</ul>
 	</section>

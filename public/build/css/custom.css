@@ -24,3 +24,7 @@
 .qtyaddminus .input-group-btn:last-child>.btn, .input-group-btn:first-child>.btn-group {
   background-color: #bef1d9;
 }
+.chini{
+  text-align: right;
+  padding-top: 1px; padding-bottom: 1px;
+}

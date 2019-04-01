@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id')->default(0)->nullable(); // if customer
             $table->integer('table_id')->default(0)->nullable(); // if customer
             $table->float('discount')->default(0)->nullable();
+            $table->float('balance')->default(0);
             $table->float('total_price')->default(0);
             $table->boolean('paid')->default(0);
             $table->integer('order_by')->default(0);// 0-customer1-admin 2-manager 3-cashier 4-waiter 5-kitchen
