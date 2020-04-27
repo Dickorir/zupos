@@ -48,7 +48,7 @@ class PosController extends Controller
 
         $hold = CartHold::with(['user'])
             ->whereHas('user', function ($query) { $query->where('id', Auth::user()->id);  })
-            ->orderBy('id','asc')->distinct('hold_id')->select('hold_id','table_no','waiter_id','customer_id')->get();
+            ->orderBy('id','asc')->select('hold_id','table_no','waiter_id','customer_id')->get();
 //        dd($hold);
         return view('pos', compact('cat','subcat','prod','hold','tables','customers'));
     }

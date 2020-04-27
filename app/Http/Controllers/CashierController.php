@@ -70,6 +70,7 @@ class CashierController extends Controller
         if ($invnum !== null){
             $invoice_no = $invnum->id;
         }
+//        dd($invnum);
 
         /* get the name of the company or hotel */
         $name = (get_option('name') == "") ? 'Zuca Restora' : get_option('name');
@@ -82,6 +83,7 @@ class CashierController extends Controller
 
         $inv_no = $acronym.str_pad($invoice_no + 1,4, 0, STR_PAD_LEFT);
 
+//        dd($inv_no);
         /* update orders table */
         Orders::where('order_number',$id)->update([
             'balance'             => $bal,

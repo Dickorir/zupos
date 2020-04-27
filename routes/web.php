@@ -102,5 +102,8 @@ Route::get('cashier/sales', 'CashierController@salesToday');
 // Report Routes
 Route::get('report/sales', 'ReportController@sales');
 Route::post('report/datesales', 'ReportController@datesales');
+Route::get('report/product_sales', 'ReportController@product_sales');
 
 Route::get('downloadExcel/{type}/{from}/{to}', 'ReportController@downloadExcel');
+Route::get('load/daterange', 'ReportController@daterange');
+Route::post('report/productdatesales', 'ReportController@product_datesales');

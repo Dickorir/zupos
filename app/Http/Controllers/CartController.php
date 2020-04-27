@@ -198,8 +198,8 @@ class CartController extends Controller
 
         $hold = CartHold::with(['user'])
             ->whereHas('user', function ($query) { $query->where('id', Auth::user()->id);  })
-            ->orderBy('id','asc')->distinct('hold_id')->select('hold_id','table_no','waiter_id','customer_id')->get();
-//        dd($cart);
+            ->distinct('hold_id')->select('hold_id','table_no','waiter_id','customer_id')->get();
+//        dd($hold);
         if ($request->ajax()){ //checking if input is ajax
             return response()->json([
                 'thecart' => view('layouts.thecart')->render(),

@@ -15,6 +15,7 @@ class OrdersController extends Controller
         $this->middleware('auth');
     }
 
+
     public function invoice(int $id)
     {
 

@@ -96,6 +96,7 @@
     <script>
         newOrders();
         $('#new_ords').on('click', function(evt) {
+            $("#funga").trigger("click");
             evt.preventDefault();
             newOrders();
         });

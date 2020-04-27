@@ -53,8 +53,8 @@
 					</a>
 					<ul class="treeview-menu">
 						<li class=""><a href="{{ url('report/sales') }}"><i class="fa fa- fa-cube"></i> Sales Report</a></li>
-						<li class=""><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Product sales</a></li>
-						<li class=""><a href="{{ url('category/') }}"><i class="fa fa- fa-cube"></i> Sales for staff/tables</a></li>
+						<li class=""><a href="{{ url('report/product_sales') }}"><i class="fa fa- fa-cube"></i> Product sales</a></li>
+						<li class=""><a href="{{ route('users.index') }}"><i class="fa fa- fa-cube"></i> Sales for staff/tables</a></li>
 					</ul>
 				</li>
 			@endif

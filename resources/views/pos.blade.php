@@ -295,7 +295,7 @@
                         $('#tax').val(data.carttax);
                         $('#total_item').text(data.cartcount);
 
-                        window.open('invoice/'+data.order_no, 'window name', 'window settings');
+                        window.open('invoice/'+data.order_no, 'receipt', height=800,width=1000);
                         // return false;
                     },
                     error: function (data) {
@@ -356,6 +356,7 @@
             $('.hold').on('click', function(evt) {
                 evt.preventDefault();
                 var count = parseInt($('#total_item').text());
+                alert('hh');
 
                 /* if the cart is empty, it cannot add to cart */
                 if (count === 0){

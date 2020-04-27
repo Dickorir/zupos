@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Orders;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Payment;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
+    public $title = 'Report';
+
     public function sales(){
-        $title = 'Reports';
+        $title = $this->title;
         return view('reports.sales', compact('title'));
 //        dd('sales');
+    }
+
+    public function daterange(){
+        return response()->json([
+            'daterange' => view('parts.daterange')->render(),
+        ]);
     }
 
     public function datesales(Request $request){
@@ -48,5 +58,43 @@ class ReportController extends Controller
                 $sheet->fromArray($data);
             });
         })->download($type);
+    }
+
+    public function product_sales(){
+        $title = $this->title;
+        $prods = DB::table('products as p')
+            ->join('order_items as oi', 'oi.product_items_id', '=', 'p.id')
+            ->join('orders as ord', 'oi.order_id', '=', 'ord.id')
+            ->where('ord.paid',1)
+            ->select('p.name', 'p.price', DB::raw('Sum(oi.quantity) AS tqty'), DB::raw('Sum(oi.sub_total_price) AS tsales'))
+            ->groupBy('p.name', 'p.price')
+            ->get();
+        $from = Carbon::now()->toFormattedDateString();
+        $to = Carbon::now()->toFormattedDateString();
+
+        return view('reports.product_sales', compact('title','prods','from','to'));
+    }
+
+    public function product_datesales(Request $request){
+
+        $from = Carbon::parse($request->from_date)->toFormattedDateString();
+        $to = Carbon::parse($request->to_date)->toFormattedDateString();
+
+        $fromDate = Carbon::parse($request->from_date)->toDateTimeString();
+        $toDate = Carbon::parse($request->to_date)->addDay()->toDateTimeString();
+
+        $prods = DB::table('products as p')
+            ->join('order_items as oi', 'oi.product_items_id', '=', 'p.id')
+            ->join('orders as ord', 'oi.order_id', '=', 'ord.id')
+            ->where('ord.paid',1)
+            ->select('p.name', 'p.price', DB::raw('Sum(oi.quantity) AS tqty'), DB::raw('Sum(oi.sub_total_price) AS tsales'))
+            ->groupBy('p.name', 'p.price')
+            ->whereBetween('ord.created_at', [$fromDate, $toDate])
+            ->get();
+
+//        dd($pays);
+        return response()->json([
+            'salestoday' => view('reports.prod_sales',compact('prods','from','to'))->render(),
+        ]);
     }
 }

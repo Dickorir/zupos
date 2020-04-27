@@ -22,8 +22,8 @@
     @if($from !== '')
         <p><b> Sales from <span id="from">{{ $from }}</span>  to <span id="to">{{ $to }} </span> </b>
         </p>
-        <button id="excel" class="btn btn-primary pull-right" style="margin-right: 5px; margin-bottom: 20px;"><i class="fa fa-download"></i> Generate Excel</button>
     @endif
+    <button id="excel" class="btn btn-primary pull-right" style="margin-right: 5px; margin-bottom: 20px;"><i class="fa fa-download"></i> Generate Excel</button>
 </div>
 <div class="col-md-12">
     <div class="box-body table-responsive no-padding">
